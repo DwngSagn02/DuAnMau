@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginHorizontal="20dp"
+    tools:context=".fragment.Top10Fragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal">
+        <Button
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_tungay1"
+            android:text="Từ ngày"
+            android:background="#F30303"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="17sp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txt_tungay1"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="17sp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal">
+        <Button
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_denngay1"
+            android:text="Đến ngày"
+            android:background="#F30303"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="17sp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txt_denngay1"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="17sp"/>
+    </LinearLayout>
+
+    <Button
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_thongke"
+        android:text="Thống kê"
+        android:layout_marginTop="50dp"
+        android:layout_gravity="center"
+        android:background="#040303"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="17sp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txt_thongke"
+        android:text="Thống kê TOP 10 ở đây"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="27sp"
+        android:layout_marginTop="50dp"/>
+
+</LinearLayout>
