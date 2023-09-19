@@ -3,10 +3,10 @@ package com.example.duanmau_sangldph42693.model;
 public class sach {
     private int masach;
     private String tensach;
-    private double giathue;
+    private int giathue;
     private String loaisach;
 
-    public sach(String tensach, double giathue, String loaisach) {
+    public sach(String tensach, int giathue, String loaisach) {
         this.tensach = tensach;
         this.giathue = giathue;
         this.loaisach = loaisach;
@@ -32,7 +32,7 @@ public class sach {
         return giathue;
     }
 
-    public void setGiathue(double giathue) {
+    public void setGiathue(int giathue) {
         this.giathue = giathue;
     }
 
@@ -47,7 +47,7 @@ public class sach {
     public sach() {
     }
 
-    public sach(int masach, String tensach, double giathue, String loaisach) {
+    public sach(int masach, String tensach, int giathue, String loaisach) {
         this.masach = masach;
         this.tensach = tensach;
         this.giathue = giathue;

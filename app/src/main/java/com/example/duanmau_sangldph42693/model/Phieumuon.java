@@ -4,11 +4,11 @@ public class Phieumuon {
     private int maphieu;
     private String thanhvien;
     private String tensach;
-    private double tienthue;
+    private int tienthue;
     private String ngaythue;
     private int trangthai;
 
-    public Phieumuon(String thanhvien, String tensach, double tienthue, String ngaythue, int trangthai) {
+    public Phieumuon(String thanhvien, String tensach, int tienthue, String ngaythue, int trangthai) {
         this.thanhvien = thanhvien;
         this.tensach = tensach;
         this.tienthue = tienthue;
@@ -44,7 +44,7 @@ public class Phieumuon {
         return tienthue;
     }
 
-    public void setTienthue(double tienthue) {
+    public void setTienthue(int tienthue) {
         this.tienthue = tienthue;
     }
 
@@ -67,7 +67,7 @@ public class Phieumuon {
     public Phieumuon() {
     }
 
-    public Phieumuon(int maphieu, String thanhvien, String tensach, double tienthue, String ngaythue, int trangthai) {
+    public Phieumuon(int maphieu, String thanhvien, String tensach, int tienthue, String ngaythue, int trangthai) {
         this.maphieu = maphieu;
         this.thanhvien = thanhvien;
         this.tensach = tensach;

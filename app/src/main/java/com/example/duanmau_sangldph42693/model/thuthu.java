@@ -1,20 +1,12 @@
 package com.example.duanmau_sangldph42693.model;
 
 public class thuthu {
-    private int matt;
-    private String hoten, tendn,mk, level;
+    private String matt, hoten,mk, level;
 
-    public thuthu(String hoten, String tendn, String mk) {
-        this.hoten = hoten;
-        this.tendn = tendn;
-        this.mk = mk;
+    public thuthu() {
     }
 
-    public int getMatt() {
-        return matt;
-    }
-
-    public void setMatt(int matt) {
+    public thuthu(String matt) {
         this.matt = matt;
     }
 
@@ -24,14 +16,6 @@ public class thuthu {
 
     public void setHoten(String hoten) {
         this.hoten = hoten;
-    }
-
-    public String getTendn() {
-        return tendn;
-    }
-
-    public void setTendn(String tendn) {
-        this.tendn = tendn;
     }
 
     public String getMk() {
@@ -50,13 +34,15 @@ public class thuthu {
         this.level = level;
     }
 
-    public thuthu() {
+    public thuthu(String hoten, String mk, String level) {
+        this.hoten = hoten;
+        this.mk = mk;
+        this.level = level;
     }
 
-    public thuthu(int matt, String hoten, String tendn, String mk, String level) {
+    public thuthu(String matt, String hoten, String mk, String level) {
         this.matt = matt;
         this.hoten = hoten;
-        this.tendn = tendn;
         this.mk = mk;
         this.level = level;
     }
