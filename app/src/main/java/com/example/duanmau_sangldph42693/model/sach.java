@@ -4,13 +4,24 @@ public class sach {
     private int masach;
     private String tensach;
     private int giathue;
-    private String loaisach;
+    private int maloai;
 
-    public sach(String tensach, int giathue, String loaisach) {
+    public sach(int masach, String tensach, int soluondamuon) {
+        this.masach = masach;
+        this.tensach = tensach;
+        this.soluondamuon = soluondamuon;
+    }
+
+    private int soluondamuon;
+
+
+    public sach(String tensach, int giathue, int maloai) {
         this.tensach = tensach;
         this.giathue = giathue;
-        this.loaisach = loaisach;
+        this.maloai = maloai;
     }
+
+
 
     public int getMasach() {
         return masach;
@@ -36,21 +47,21 @@ public class sach {
         this.giathue = giathue;
     }
 
-    public String getLoaisach() {
-        return loaisach;
+    public int getMaloai() {
+        return maloai;
     }
 
-    public void setLoaisach(String loaisach) {
-        this.loaisach = loaisach;
+    public void setMaloai(int maloai) {
+        this.maloai = maloai;
     }
 
-    public sach() {
-    }
-
-    public sach(int masach, String tensach, int giathue, String loaisach) {
+    public sach(int masach, String tensach, int giathue, int maloai) {
         this.masach = masach;
         this.tensach = tensach;
         this.giathue = giathue;
-        this.loaisach = loaisach;
+        this.maloai = maloai;
+    }
+
+    public sach() {
     }
 }

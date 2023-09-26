@@ -1,13 +1,18 @@
 package com.example.duanmau_sangldph42693.model;
 
 public class thuthu {
-    private String matt, hoten,mk, level;
+    private String matt, hoten,matkhau, level;
 
     public thuthu() {
     }
 
     public thuthu(String matt) {
         this.matt = matt;
+    }
+
+    public thuthu(String hoten, String matkhau) {
+        this.hoten = hoten;
+        this.matkhau = matkhau;
     }
 
     public String getHoten() {
@@ -18,12 +23,12 @@ public class thuthu {
         this.hoten = hoten;
     }
 
-    public String getMk() {
-        return mk;
+    public String getMatkhau() {
+        return matkhau;
     }
 
-    public void setMk(String mk) {
-        this.mk = mk;
+    public void setMatkhau(String mk) {
+        this.matkhau = matkhau;
     }
 
     public String getLevel() {
@@ -34,16 +39,16 @@ public class thuthu {
         this.level = level;
     }
 
-    public thuthu(String hoten, String mk, String level) {
+    public thuthu(String hoten, String matkhau, String level) {
         this.hoten = hoten;
-        this.mk = mk;
+        this.matkhau = matkhau;
         this.level = level;
     }
 
-    public thuthu(String matt, String hoten, String mk, String level) {
+    public thuthu(String matt, String hoten, String matkhau, String level) {
         this.matt = matt;
         this.hoten = hoten;
-        this.mk = mk;
+        this.matkhau = matkhau;
         this.level = level;
     }
 }

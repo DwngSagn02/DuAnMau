@@ -23,7 +23,7 @@ public class QLThanhVienFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.item_rcv_thanhvien, container, false);
+        View view = inflater.inflate(R.layout.fragment_q_l_thanh_vien, container, false);
         return view;
     }
 }

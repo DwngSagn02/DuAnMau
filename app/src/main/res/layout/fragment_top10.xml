@@ -64,14 +64,10 @@
         android:textStyle="bold"
         android:textSize="17sp"/>
 
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerTop10"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/txt_thongke"
-        android:text="Thống kê TOP 10 ở đây"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:textSize="27sp"
-        android:layout_marginTop="50dp"/>
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp"/>
 
 </LinearLayout>

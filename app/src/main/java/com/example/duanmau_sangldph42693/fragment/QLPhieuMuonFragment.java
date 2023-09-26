@@ -20,7 +20,7 @@ public class QLPhieuMuonFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.item_rcv_phieumuon, container, false);
+        View view = inflater.inflate(R.layout.fragment_q_l_phieu_muon, container, false);
         return view;
     }
 }
