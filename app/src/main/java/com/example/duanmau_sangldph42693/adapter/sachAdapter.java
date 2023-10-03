@@ -207,12 +207,14 @@ public class sachAdapter extends RecyclerView.Adapter<sachAdapter.viewholder> {
                     int gia = Integer.parseInt(giathue);
 
                     // lấy ra mã loại mà người dùng chọn
-                    int maloai = 0;
+                    int maloai =0;
                     for (loaisach ls : listLoai) {
-                        String check = edt_loaisach_ud.getText().toString().trim();
+                        String check = ls.getTenloai();
                         if (loai.equalsIgnoreCase(check)){
                             maloai = ls.getMaloai();
+                            break;
                         }
+
                     }
                     if (sDao.updateSach(masach,maloai,ten,gia)){
                         list.clear();
