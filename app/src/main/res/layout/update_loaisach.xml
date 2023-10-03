@@ -5,14 +5,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:contentPadding="10dp"
     app:cardCornerRadius="15dp"
-    android:layout_margin="30dp">
+    android:layout_margin="10dp">
 
     <LinearLayout
+        android:background="@drawable/vien"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <LinearLayout
+            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -37,6 +39,7 @@
         </LinearLayout>
 
         <EditText
+            android:layout_marginHorizontal="10dp"
             android:id="@+id/edt_tenloaisach_ud"
             android:layout_marginTop="20dp"
             android:layout_width="match_parent"
@@ -60,7 +63,6 @@
                 android:stateListAnimator="@null"
                 android:text="Sửa"
                 android:textAllCaps="false"
-                android:textColor="@color/white"
                 android:textStyle="bold" />
         </LinearLayout>
 

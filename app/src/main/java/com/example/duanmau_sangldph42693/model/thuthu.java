@@ -45,6 +45,14 @@ public class thuthu {
         this.level = level;
     }
 
+    public String getMatt() {
+        return matt;
+    }
+
+    public void setMatt(String matt) {
+        this.matt = matt;
+    }
+
     public thuthu(String matt, String hoten, String matkhau, String level) {
         this.matt = matt;
         this.hoten = hoten;

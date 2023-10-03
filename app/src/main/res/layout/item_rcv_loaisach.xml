@@ -9,6 +9,7 @@
     android:id="@+id/detailsLoaiSach">
 
     <LinearLayout
+        android:background="@drawable/vien"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -16,7 +17,7 @@
 
         <LinearLayout
             android:layout_gravity="center"
-            android:layout_width="250dp"
+            android:layout_width="320dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_marginLeft="20dp">
@@ -29,13 +30,21 @@
                 <TextView
                     android:layout_margin="5dp"
                     android:layout_gravity="center"
-                    android:id="@+id/txtMaLoai"
                     android:textSize="16dp"
                     android:textColor="#F44336"
                     android:textStyle="bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Mã loại: 1" />
+                    android:text="Mã loại: " />
+                <TextView
+                    android:layout_margin="5dp"
+                    android:layout_gravity="center"
+                    android:id="@+id/txtMaLoai"
+                    android:textSize="16dp"
+                    android:textColor="#F44336"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
 
             </LinearLayout>
 
@@ -47,13 +56,21 @@
                 <TextView
                     android:layout_margin="5dp"
                     android:layout_gravity="center"
-                    android:id="@+id/txtTenLoai"
                     android:textSize="20dp"
                     android:textColor="#000000"
                     android:textStyle="bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Tên loại : Java" />
+                    android:text="Tên loại : " />
+                <TextView
+                    android:layout_margin="5dp"
+                    android:layout_gravity="center"
+                    android:id="@+id/txtTenLoai"
+                    android:textSize="20dp"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
 
             </LinearLayout>
         </LinearLayout>

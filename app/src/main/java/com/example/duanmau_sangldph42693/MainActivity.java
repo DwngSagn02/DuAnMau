@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
     Toolbar toolbar;
     NavigationView navigationView;
+    SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +46,9 @@ public class MainActivity extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawerlayout);
         toolbar = findViewById(R.id.toolBar);
         navigationView  = findViewById(R.id.navigationView);
+
+        sharedPreferences = getSharedPreferences("USER_FILE", MODE_PRIVATE);
+        String level = sharedPreferences.getString("level", "");
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -92,9 +96,13 @@ public class MainActivity extends AppCompatActivity {
                     DoanhThuFragment doanhThuFragment = new DoanhThuFragment();
                     replaceFrg(doanhThuFragment);
                 } else if (item.getItemId() == R.id.mThemNguoiDung) {
-                    getSupportActionBar().setTitle("Thêm người dùng");
-                    ThemNguoiDungFragment themNguoiDungFragment = new ThemNguoiDungFragment();
-                    replaceFrg(themNguoiDungFragment);
+                    if (!level.equalsIgnoreCase("admin")){
+                        getSupportActionBar().setTitle("Thêm người dùng");
+                        ThemNguoiDungFragment themNguoiDungFragment = new ThemNguoiDungFragment();
+                        replaceFrg(themNguoiDungFragment);
+                    }else {
+                        Toast.makeText(MainActivity.this, "Bạn không có quyền truy cập", Toast.LENGTH_SHORT).show();
+                    }
 
                 } else if (item.getItemId() == R.id.mDoiMatKhau) {
                     getSupportActionBar().setTitle("Đổi mật khẩu");

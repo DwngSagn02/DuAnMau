@@ -5,6 +5,15 @@ public class sach {
     private String tensach;
     private int giathue;
     private int maloai;
+    int soluondamuon;
+
+    public int getSoluondamuon() {
+        return soluondamuon;
+    }
+
+    public void setSoluondamuon(int soluondamuon) {
+        this.soluondamuon = soluondamuon;
+    }
 
     public sach(int masach, String tensach, int soluondamuon) {
         this.masach = masach;
@@ -12,7 +21,6 @@ public class sach {
         this.soluondamuon = soluondamuon;
     }
 
-    private int soluondamuon;
 
 
     public sach(String tensach, int giathue, int maloai) {
@@ -39,7 +47,7 @@ public class sach {
         this.tensach = tensach;
     }
 
-    public double getGiathue() {
+    public int getGiathue() {
         return giathue;
     }
 

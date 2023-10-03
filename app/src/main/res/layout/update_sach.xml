@@ -8,11 +8,13 @@
     android:layout_margin="30dp">
 
     <LinearLayout
+        android:background="@drawable/vien"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <LinearLayout
+            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -59,6 +61,7 @@
             android:layout_marginRight="15dp"
             android:layout_marginBottom="5dp"
             android:background="@drawable/form"
+            android:inputType="number"
             android:hint="Gia thuê"
             android:padding="10dp" />
 
@@ -70,6 +73,10 @@
             android:layout_marginTop="5dp"
             android:layout_marginRight="15dp"
             android:layout_marginBottom="5dp"
+            android:inputType="none"
+            android:clickable="false"
+            android:cursorVisible="false"
+            android:focusable="false"
             android:background="@drawable/form"
             android:hint="Loai sách"
             android:padding="10dp" />
@@ -89,7 +96,6 @@
                 android:stateListAnimator="@null"
                 android:text="Sửa"
                 android:textAllCaps="false"
-                android:textColor="@color/white"
                 android:textStyle="bold" />
         </LinearLayout>
 

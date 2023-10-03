@@ -2,20 +2,17 @@ package com.example.duanmau_sangldph42693.model;
 
 public class phieumuon {
     private int mapm, matv, masach,trangthai, tienthue;
-    private String matt, ngay;
-    private String tentv;
-    private String tentt;
+    private String ngay;
+    private String tentv,tensach;
 
-    public phieumuon(int mapm,String matt, String tentt, int matv,  String tentv,int masach, String tensach,  String ngay, int trangthai, int tienthue) {
+    public phieumuon(int mapm, int matv, String tentv, int masach, String tensach, String ngay, int trangthai, int tienthue) {
         this.mapm = mapm;
         this.matv = matv;
         this.masach = masach;
         this.trangthai = trangthai;
         this.tienthue = tienthue;
-        this.matt = matt;
         this.ngay = ngay;
         this.tentv = tentv;
-        this.tentt = tentt;
         this.tensach = tensach;
     }
 
@@ -59,13 +56,6 @@ public class phieumuon {
         this.tienthue = tienthue;
     }
 
-    public String getMatt() {
-        return matt;
-    }
-
-    public void setMatt(String matt) {
-        this.matt = matt;
-    }
 
     public String getNgay() {
         return ngay;
@@ -83,13 +73,6 @@ public class phieumuon {
         this.tentv = tentv;
     }
 
-    public String getTentt() {
-        return tentt;
-    }
-
-    public void setTentt(String tentt) {
-        this.tentt = tentt;
-    }
 
     public String getTensach() {
         return tensach;
@@ -100,18 +83,11 @@ public class phieumuon {
     }
 
 
-    public phieumuon(int matv, int masach, int trangthai, int tienthue, String matt, String ngay) {
+    public phieumuon(int matv, int masach, int trangthai, int tienthue, String ngay) {
         this.matv = matv;
         this.masach = masach;
         this.trangthai = trangthai;
         this.tienthue = tienthue;
-        this.matt = matt;
         this.ngay = ngay;
     }
-
-    private String tensach;
-
-
-
-
 }
