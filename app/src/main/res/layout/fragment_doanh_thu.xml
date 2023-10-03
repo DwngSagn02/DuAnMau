@@ -28,6 +28,7 @@
             android:id="@+id/txt_tungay"
             android:textColor="@color/black"
             android:gravity="center"
+            android:hint="dd/mm/yyyy"
             android:textStyle="bold"
             android:textSize="17sp"/>
     </LinearLayout>
@@ -53,6 +54,7 @@
             android:textColor="@color/black"
             android:textStyle="bold"
             android:gravity="center"
+            android:hint="dd/mm/yyyy"
             android:textSize="17sp"/>
     </LinearLayout>
 
