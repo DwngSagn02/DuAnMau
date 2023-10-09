@@ -10,7 +10,7 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String DB_NAME = "PNLIB";
 
     public DBHelper(@Nullable Context context) {
-        super(context, DB_NAME, null, 2);
+        super(context, DB_NAME, null, 5);
     }
 
     @Override
@@ -38,7 +38,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 "trangthai integer)");
 
         // Thêm dữ liệu vào bảng
-        db.execSQL("insert into thuthu values('admin','admin','admin','admin'),('thuthu1','thuthu1','thuthu1','thuthu'),('thuthu2','thuthu2','thuthu2','thuthu')");
+        db.execSQL("insert into thuthu values('admin','admin','123','Admin'),('sang','Lê Đăng Sang','a12','Thủ Thư')");
         db.execSQL("insert into thanhvien values(1,'Lê Đăng Sang',2001),(2,'Phạm Minh Hiếu',2004),(3,'Bùi Văn Sơn',2002)");
         db.execSQL("insert into sach values(1,'Java 1',1500,1),(2,'Java 2',3000,1),(3,'CSS/HTML',2000,2)");
         db.execSQL("insert into loaisach values(1,'Java'),(2,'WEB')");

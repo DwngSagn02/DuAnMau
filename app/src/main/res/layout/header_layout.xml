@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="185dp"
-    android:background="#F6EC92"
+    android:background="#EAE8DB"
     android:orientation="vertical">
 
 
@@ -21,9 +21,9 @@
         android:layout_marginBottom="30dp"
         android:text="Sangldph42693@fpt.edu.vn"
         android:textStyle="bold"
-        android:textSize="22dp"
+        android:textSize="20dp"
         android:layout_marginTop="20dp"
-        android:layout_marginLeft="40dp"
-        android:textColor="@color/black" />
+        android:layout_marginLeft="10dp"
+        android:textColor="#2196F3" />
 
 </LinearLayout>

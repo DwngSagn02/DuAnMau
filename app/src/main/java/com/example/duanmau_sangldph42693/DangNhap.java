@@ -23,7 +23,7 @@ public class DangNhap extends AppCompatActivity {
     Button btn_DangNhap,btn_Huy;
     thuthuDao ttDao ;
     CheckBox chk_NhoMK;
-    String strUser,strPass;
+    String strUser,strPass, strLevel, strName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,9 +40,6 @@ public class DangNhap extends AppCompatActivity {
         String pass = pref.getString("PASSWORD","");
         Boolean rem = pref.getBoolean("REMEMBER",false);
 
-        SharedPreferences.Editor editor = pref.edit();
-        editor.putString("level",ttDao.getLevel(user));
-        editor.commit();
 
         txt_TenDN.setText(user);
         txt_MatKhau.setText(pass);
@@ -62,13 +59,15 @@ public class DangNhap extends AppCompatActivity {
             }
         });
     }
-    public void rememberUser(String u,String p,boolean status){
+    public void rememberUser(String n, String l, String u,String p,boolean status){
         SharedPreferences pref = getSharedPreferences("USER_FILE",MODE_PRIVATE);
         SharedPreferences.Editor edit = pref.edit();
         if(!status){
             // xoa trang thai luu truoc do
             edit.clear();
         }else {
+            edit.putString("name",n);
+            edit.putString("level",l);
             edit.putString("USERNAME",u);
             edit.putString("PASSWORD",p);
             edit.putBoolean("REMEMBER",status);
@@ -79,12 +78,15 @@ public class DangNhap extends AppCompatActivity {
     public void checkLogin(){
         strUser = txt_TenDN.getText().toString();
         strPass = txt_MatKhau.getText().toString();
+        strLevel = ttDao.getLevel(strUser);
+        strName = ttDao.getName(strUser);
+
         if (strUser.trim().isEmpty() || strPass.trim().isEmpty()){
             Toast.makeText(this, "Tên đăng nhập và mật khẩu không được bỏ trống", Toast.LENGTH_SHORT).show();
         }else {
-            if (!ttDao.checkLogin(strUser,strPass)){
+            if (ttDao.checkLogin(strUser,strPass)){
                 Toast.makeText(getApplicationContext(), "Login thành công", Toast.LENGTH_SHORT).show();
-                rememberUser(strUser,strPass,chk_NhoMK.isChecked());
+                rememberUser(strName,strLevel,strUser,strPass,chk_NhoMK.isChecked());
                 Intent intent = new Intent(getApplicationContext(),MainActivity.class);
                 intent.putExtra("user",strUser);
                 startActivity(intent);

@@ -1,5 +1,9 @@
 package com.example.duanmau_sangldph42693;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -12,6 +16,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -38,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
     Toolbar toolbar;
     NavigationView navigationView;
     SharedPreferences sharedPreferences;
+    private String level,name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +54,13 @@ public class MainActivity extends AppCompatActivity {
         navigationView  = findViewById(R.id.navigationView);
 
         sharedPreferences = getSharedPreferences("USER_FILE", MODE_PRIVATE);
-        String level = sharedPreferences.getString("level", "");
+        level = sharedPreferences.getString("level", "");
+        name = sharedPreferences.getString("name","");
+
+        View header =navigationView.getHeaderView(0);
+        TextView userName = header.findViewById(R.id.userFullname);
+
+        userName.setText("Xin chào "+name+" ("+level+")");
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -64,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
         toggle.setDrawerIndicatorEnabled(true);
         toggle.syncState();
         drawerLayout.addDrawerListener(toggle);
-        getSupportActionBar().setTitle("Phương Nam Library");
+        getSupportActionBar().setTitle("Thư viện Phương Nam");
         navigationView.setItemIconTintList(null);
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -96,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
                     DoanhThuFragment doanhThuFragment = new DoanhThuFragment();
                     replaceFrg(doanhThuFragment);
                 } else if (item.getItemId() == R.id.mThemNguoiDung) {
-                    if (!level.equalsIgnoreCase("admin")){
+                    if (level.equalsIgnoreCase("admin")){
                         getSupportActionBar().setTitle("Thêm người dùng");
                         ThemNguoiDungFragment themNguoiDungFragment = new ThemNguoiDungFragment();
                         replaceFrg(themNguoiDungFragment);
@@ -109,9 +121,7 @@ public class MainActivity extends AppCompatActivity {
                     DoiMkFragment doiMkFragment = new DoiMkFragment();
                     replaceFrg(doiMkFragment);
                 } else if (item.getItemId() == R.id.mThoat) {
-                    Intent intent = new Intent(MainActivity.this, DangNhap.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    startActivity(intent);
+                    exit();
                 }
                 drawerLayout.closeDrawer(GravityCompat.START);
                 return true;
@@ -133,5 +143,19 @@ public class MainActivity extends AppCompatActivity {
         else {
             super.onBackPressed();
         }
+    }
+
+    public void exit(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Xác nhận");
+        builder.setMessage("Bạn có chắc chắn muốn đăng xuất không?");
+        builder.setNegativeButton("Không",null);
+        builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                startActivity(new Intent(MainActivity.this, DangNhap.class));
+            }
+        });
+        builder.show();
     }
 }

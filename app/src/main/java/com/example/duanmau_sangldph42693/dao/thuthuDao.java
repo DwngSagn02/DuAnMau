@@ -27,22 +27,37 @@ private SQLiteDatabase db;
         values.put("matt",obj.getMatt());
         values.put("hoten",obj.getHoten());
         values.put("matkhau",obj.getMatkhau());
+        values.put("level",obj.getLevel());
         return db.insert("thuthu",null,values);
     }
-    public long updatePass(thuthu obj){
-        ContentValues values = new ContentValues();
-        values.put("hoten",obj.getHoten());
-        values.put("matkhau",obj.getMatkhau());
-        return db.update("thuthu",values,"matt = ?",new String[]{String.valueOf(obj.getMatt())});
-    }
 
-    public long delete(String id){
-        return db.delete("thuthu","matt = ?",new String[]{String.valueOf(id)});
+    public int updatePass(String matt, String mkCu, String mkMoi){
+        String sql = "SELECT * FROM thuthu WHERE matt =? AND matkhau = ?";
+        List<thuthu> list = getData(sql,matt,mkCu);
+        if (list.size() != 0){
+            ContentValues values = new ContentValues();
+            values.put("matkhau",mkMoi);
+            long check = db.update("thuthu",values,"matt = ?", new String[]{matt});
+            if (check == -1){
+                return -1;
+            }
+            return 1;
+        }
+        return 0 ;
     }
 
     public List<thuthu> getAll(){
         String sql = "SELECT * FROM thuthu";
         return getData(sql);
+    }
+
+    public boolean checkTK(String id){
+        String sql = "SELECT * FROM thuthu WHERE matt=?";
+        List<thuthu> list = getData(sql,id);
+        if (list.size() == 0){
+            return false;
+        }
+        return true;
     }
 
     public thuthu getID(String id){
@@ -70,28 +85,27 @@ private SQLiteDatabase db;
             obj.setMatt(cursor.getString(cursor.getColumnIndex("matt")));
             obj.setHoten(cursor.getString(cursor.getColumnIndex("hoten")));
             obj.setMatkhau(cursor.getString(cursor.getColumnIndex("matkhau")));
+            obj.setLevel(cursor.getString(cursor.getColumnIndex("level")));
             list.add(obj);
         }
         return list;
     }
     public String getLevel(String matt) {
         db = dbHelper.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT level FROM THUTHU WHERE matt = ?", new String[]{matt});
+        Cursor cursor = db.rawQuery("SELECT level FROM thuthu WHERE matt = ?", new String[]{matt});
         if (cursor.getCount() > 0) {
             cursor.moveToFirst();
             return cursor.getString(0);
         } else return "Lỗi xác thực !";
     }
-    public ArrayList<thuthu> getInfoThuThu(String matt) {
+
+    public String getName(String matt) {
         db = dbHelper.getReadableDatabase();
-        ArrayList<thuthu> list = new ArrayList<>();
-        Cursor cursor = db.rawQuery("SELECT * FROM THUTHU WHERE matt = ?", new String[]{matt});
-
-        if (cursor.getCount() == 1) {
+        Cursor cursor = db.rawQuery("SELECT hoten FROM thuthu WHERE matt = ?", new String[]{matt});
+        if (cursor.getCount() > 0) {
             cursor.moveToFirst();
-            list.add(new thuthu(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getString(3)));
-        }
-
-        return list;
+            return cursor.getString(0);
+        } else return "Lỗi xác thực !";
     }
+
 }
