@@ -4,10 +4,13 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.text.method.PasswordTransformationMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.duanmau_sangldph42693.R;
@@ -25,6 +28,7 @@ public class ThemNguoiDungFragment extends Fragment {
     TextInputEditText txt_HoTen_tao,txt_TenDN_tao,txt_MatKhau_tao,txt_XNMK_tao;
     Button btn_Tao, btn_Huy;
     String tenDN,hoTen,matKhau,XNMK;
+    ImageButton an,hien,an1,hien1;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -36,9 +40,49 @@ public class ThemNguoiDungFragment extends Fragment {
         txt_TenDN_tao = view.findViewById(R.id.txt_TenDN_tao);
         txt_MatKhau_tao = view.findViewById(R.id.txt_MatKhau_tao);
         txt_XNMK_tao = view.findViewById(R.id.txt_XNMK_tao);
+        hien = view.findViewById(R.id.imgHien);
+        hien1 = view.findViewById(R.id.imgHien1);
+        an = view.findViewById(R.id.imgAn);
+        an1 = view.findViewById(R.id.imgAn1);
+
 
         ttDao = new thuthuDao(getContext());
 
+        an.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                hien.setVisibility(View.VISIBLE);
+                an.setVisibility(View.GONE);
+                txt_MatKhau_tao.setTransformationMethod(PasswordTransformationMethod.getInstance());
+            }
+        });
+
+        an1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                hien1.setVisibility(View.VISIBLE);
+                an1.setVisibility(View.GONE);
+                txt_XNMK_tao.setTransformationMethod(PasswordTransformationMethod.getInstance());
+            }
+        });
+
+        hien.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                hien.setVisibility(View.GONE);
+                an.setVisibility(View.VISIBLE);
+                txt_MatKhau_tao.setTransformationMethod(null);
+            }
+        });
+
+        hien1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                hien1.setVisibility(View.GONE);
+                an1.setVisibility(View.VISIBLE);
+                txt_XNMK_tao.setTransformationMethod(null);
+            }
+        });
 
 
         btn_Huy.setOnClickListener(new View.OnClickListener() {
@@ -79,6 +123,4 @@ public class ThemNguoiDungFragment extends Fragment {
         txt_MatKhau_tao.setText("");
         txt_XNMK_tao.setText("");
     }
-
-
 }

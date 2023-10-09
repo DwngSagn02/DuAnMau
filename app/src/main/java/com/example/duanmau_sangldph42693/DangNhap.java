@@ -5,11 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.duanmau_sangldph42693.dao.thuthuDao;
@@ -33,6 +35,8 @@ public class DangNhap extends AppCompatActivity {
         txt_TenDN = findViewById(R.id.txt_TenDN);
         txt_MatKhau = findViewById(R.id.txt_MatKhau);
         chk_NhoMK = findViewById(R.id.chk_NhoMK);
+        ImageButton an = findViewById(R.id.imgAn);
+        ImageButton hien = findViewById(R.id.imgHien);
         ttDao = new thuthuDao(this);
 
         SharedPreferences pref = getSharedPreferences("USER_FILE",MODE_PRIVATE);
@@ -44,6 +48,24 @@ public class DangNhap extends AppCompatActivity {
         txt_TenDN.setText(user);
         txt_MatKhau.setText(pass);
         chk_NhoMK.setChecked(rem);
+
+        an.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                hien.setVisibility(View.VISIBLE);
+                an.setVisibility(View.GONE);
+                txt_MatKhau.setTransformationMethod(PasswordTransformationMethod.getInstance());
+            }
+        });
+
+        hien.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                hien.setVisibility(View.GONE);
+                an.setVisibility(View.VISIBLE);
+                txt_MatKhau.setTransformationMethod(null);
+            }
+        });
 
         btn_Huy.setOnClickListener(new View.OnClickListener() {
             @Override
