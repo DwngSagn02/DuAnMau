@@ -111,6 +111,23 @@
                     android:text="Ngày mượn: " />
 
             </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_margin="5dp"
+                    android:layout_gravity="center"
+                    android:id="@+id/txtGio"
+                    android:textSize="15dp"
+                    android:textColor="#535353"
+                    android:textStyle="italic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Giờ : " />
+
+            </LinearLayout>
 
 
         </LinearLayout>

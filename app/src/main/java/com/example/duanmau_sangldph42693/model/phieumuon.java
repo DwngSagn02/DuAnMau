@@ -3,15 +3,26 @@ package com.example.duanmau_sangldph42693.model;
 public class phieumuon {
     private int mapm, matv, masach,trangthai, tienthue;
     private String ngay;
+    private String gio;
+
+    public String getGio() {
+        return gio;
+    }
+
+    public void setGio(String gio) {
+        this.gio = gio;
+    }
+
     private String tentv,tensach;
 
-    public phieumuon(int mapm, int matv, String tentv, int masach, String tensach, String ngay, int trangthai, int tienthue) {
+    public phieumuon(int mapm, int matv, String tentv, int masach, String tensach, String ngay, String gio, int trangthai, int tienthue) {
         this.mapm = mapm;
         this.matv = matv;
         this.masach = masach;
         this.trangthai = trangthai;
         this.tienthue = tienthue;
         this.ngay = ngay;
+        this.gio = gio;
         this.tentv = tentv;
         this.tensach = tensach;
     }
@@ -83,11 +94,12 @@ public class phieumuon {
     }
 
 
-    public phieumuon(int matv, int masach, int trangthai, int tienthue, String ngay) {
+    public phieumuon(int matv, int masach, int trangthai, int tienthue, String ngay,String gio) {
         this.matv = matv;
         this.masach = masach;
         this.trangthai = trangthai;
         this.tienthue = tienthue;
         this.ngay = ngay;
+        this.gio = gio;
     }
 }

@@ -71,6 +71,7 @@ public class phieumuonAdapter extends RecyclerView.Adapter<phieumuonAdapter.view
             holder.txtTenSach.setText("Tên Sách : "+pm.getTensach());
             holder.txtTienThue.setText("Tiền Thuê : "+pm.getTienthue());
             holder.txtNgayMuon.setText("Ngày Mượn : "+pm.getNgay());
+            holder.txtGio.setText("Giờ : "+pm.getGio());
 
             // set color
             holder.txtMaPM.setTextColor(Color.parseColor(statusColor));
@@ -78,6 +79,7 @@ public class phieumuonAdapter extends RecyclerView.Adapter<phieumuonAdapter.view
             holder.txtTenSach.setTextColor(Color.parseColor(statusColor));
             holder.txtTienThue.setTextColor(Color.parseColor(statusColor));
             holder.txtNgayMuon.setTextColor(Color.parseColor(statusColor));
+            holder.txtGio.setTextColor(Color.parseColor(statusColor));
 
 
             if (pm.getTrangthai() == 1){
@@ -148,7 +150,7 @@ public class phieumuonAdapter extends RecyclerView.Adapter<phieumuonAdapter.view
     }
 
     public static class viewholder extends RecyclerView.ViewHolder{
-        TextView txtMaPM,txtTenTV_Pm,txtTenSach,txtTienThue,txtNgayMuon;
+        TextView txtMaPM,txtTenTV_Pm,txtTenSach,txtTienThue,txtNgayMuon,txtGio;
         CheckBox chktrangthai;
         ImageView btn_deletePM;
 
@@ -160,6 +162,7 @@ public class phieumuonAdapter extends RecyclerView.Adapter<phieumuonAdapter.view
             txtTenSach = itemView.findViewById(R.id.txtTenSach);
             txtTienThue = itemView.findViewById(R.id.txtTienThue);
             txtNgayMuon = itemView.findViewById(R.id.txtNgayMuon);
+            txtGio = itemView.findViewById(R.id.txtGio);
             chktrangthai = itemView.findViewById(R.id.chktrangthai);
             btn_deletePM = itemView.findViewById(R.id.btn_deletePM);
 

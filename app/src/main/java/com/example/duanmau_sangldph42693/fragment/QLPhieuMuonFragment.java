@@ -13,11 +13,15 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.duanmau_sangldph42693.R;
@@ -47,6 +51,9 @@ public class QLPhieuMuonFragment extends Fragment {
     private ArrayList<phieumuon> list = new ArrayList<>();
     Dialog dialog;
 
+    private Button btn_reset,btn_search;
+    private EditText edt_search;
+
     public QLPhieuMuonFragment() {
         // Required empty public constructor
     }
@@ -58,11 +65,47 @@ public class QLPhieuMuonFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_q_l_phieu_muon, container, false);
         rcv_pm = view.findViewById(R.id.rcv_pm);
         fladd_pm = view.findViewById(R.id.fladd_pm);
+        btn_reset = view.findViewById(R.id.btn_reset);
+        btn_search = view.findViewById(R.id.btn_search);
+        edt_search = view.findViewById(R.id.edt_search);
         pmDao = new phieumuonDao(getContext());
-        list = pmDao.getListPhieuMuon();
-        rcv_pm.setLayoutManager(new LinearLayoutManager(getActivity()));
-        adapter = new phieumuonAdapter(getContext(),list);
-        rcv_pm.setAdapter(adapter);
+
+        loadPM();
+        btn_reset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loadPM();
+                edt_search.setText("");
+            }
+        });
+
+        btn_search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String name = edt_search.getText().toString().trim();
+                ArrayList<phieumuon> search = new ArrayList<>();
+                if (name.isEmpty()){
+                    Toast.makeText(getContext(), "Nhập tên thành viên muốn tìm", Toast.LENGTH_SHORT).show();
+                }else {
+                    int i = 0;
+
+                    for (phieumuon p : list) {
+                        if (p.getTentv().toLowerCase(Locale.ROOT).contains(name.toLowerCase(Locale.ROOT))) {
+                            search.add(p);
+                            i++;
+                        }
+                    }
+
+                    if (i == 0) {
+                        Toast.makeText(getContext(), "Không tìm thấy ", Toast.LENGTH_SHORT).show();
+                    } else {
+                        loadSearch(search);
+                        Toast.makeText(getContext(), "Đã tìm thấy ", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        });
+
         fladd_pm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -162,7 +205,10 @@ public class QLPhieuMuonFragment extends Fragment {
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yy", Locale.getDefault());
         String ngay = format.format(date);
 
-        phieumuon pm = new phieumuon(matv, masach, 0, tien, ngay);
+        SimpleDateFormat gioFormat = new SimpleDateFormat("HH:mm", Locale.getDefault());
+        String gio = gioFormat.format(date);
+
+        phieumuon pm = new phieumuon(matv, masach, 0, tien, ngay,gio);
 
         boolean check = pmDao.addPhieuMuon(pm);
 
@@ -177,5 +223,16 @@ public class QLPhieuMuonFragment extends Fragment {
         }
     }
 
+    private void loadPM(){
+        list = pmDao.getListPhieuMuon();
+        rcv_pm.setLayoutManager(new LinearLayoutManager(getActivity()));
+        adapter = new phieumuonAdapter(getContext(),list);
+        rcv_pm.setAdapter(adapter);
+    }
 
+    private void loadSearch(ArrayList<phieumuon> listSearch){
+        rcv_pm.setLayoutManager(new LinearLayoutManager(getActivity()));
+        adapter = new phieumuonAdapter(getContext(),listSearch);
+        rcv_pm.setAdapter(adapter);
+    }
 }

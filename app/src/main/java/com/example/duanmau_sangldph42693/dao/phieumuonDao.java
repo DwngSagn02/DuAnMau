@@ -20,11 +20,11 @@ public class phieumuonDao {
     public ArrayList<phieumuon> getListPhieuMuon() {
         ArrayList<phieumuon> list = new ArrayList<>();
         SQLiteDatabase database = dbHelper.getReadableDatabase();
-        Cursor cursor = database.rawQuery("SELECT pm.mapm, pm.matv, tv.hoten, pm.masach, book.tensach, pm.ngay, pm.trangthai, pm.tienthue FROM phieumuon pm, thanhvien tv, sach book  WHERE pm.matv = tv.matv AND pm.masach = book.masach ORDER BY pm.mapm", null);
+        Cursor cursor = database.rawQuery("SELECT pm.mapm, pm.matv, tv.hoten, pm.masach, book.tensach, pm.ngay, pm.gio, pm.trangthai, pm.tienthue FROM phieumuon pm, thanhvien tv, sach book  WHERE pm.matv = tv.matv AND pm.masach = book.masach ORDER BY pm.mapm", null);
         if (cursor.getCount() != 0) {
             cursor.moveToFirst();
             do {
-                list.add(new phieumuon(cursor.getInt(0), cursor.getInt(1), cursor.getString(2), cursor.getInt(3), cursor.getString(4), cursor.getString(5), cursor.getInt(6), cursor.getInt(7)));
+                list.add(new phieumuon(cursor.getInt(0), cursor.getInt(1), cursor.getString(2), cursor.getInt(3), cursor.getString(4), cursor.getString(5), cursor.getString(6), cursor.getInt(7), cursor.getInt(8)));
             } while (cursor.moveToNext());
         }
         return list;
@@ -46,6 +46,7 @@ public class phieumuonDao {
         contentValues.put("matv", pm.getMatv());
         contentValues.put("masach", pm.getMasach());
         contentValues.put("ngay", pm.getNgay());
+        contentValues.put("gio", pm.getGio());
         contentValues.put("tienthue", pm.getTienthue());
         contentValues.put("trangthai", pm.getTrangthai());
 

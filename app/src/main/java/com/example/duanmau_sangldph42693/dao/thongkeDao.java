@@ -29,19 +29,6 @@ public class thongkeDao {
 
     @SuppressLint("Range")
     public List<Top> getTop10() {
-//        ArrayList<sach> list = new ArrayList<>();
-//        SQLiteDatabase database = dbHelper.getReadableDatabase();
-//        Cursor cursor = database.rawQuery("SELECT pm.masach, book.tensach, COUNT(pm.masach) FROM phieumuon pm, sach book WHERE pm.masach = book.masach GROUP BY pm.masach, book.tensach ORDER BY COUNT(pm.masach) DESC LIMIT 10", null);
-//
-//        if (cursor.getCount() != 0) {
-//            cursor.moveToFirst();
-//
-//            do {
-//                list.add(new sach(cursor.getInt(0), cursor.getString(1), cursor.getInt(2)));
-//            } while (cursor.moveToNext());
-//        }
-//
-//        return list;
         String sqlTop = "select masach, count(masach) as soluong from phieumuon group by masach order by soluong desc limit 10";
         List<Top> list = new ArrayList<>();
         sachDao sDao = new sachDao(context);
