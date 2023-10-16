@@ -78,6 +78,8 @@ public class sachDao {
             sach obj = new sach();
             obj.setMasach(cursor.getInt(0));
             obj.setTensach(cursor.getString(1));
+            obj.setGiathue(cursor.getInt(2));
+            obj.setMaloai(cursor.getInt(3));
             list.add(obj);
         }
         return list;
@@ -87,5 +89,16 @@ public class sachDao {
         String sql = "select * from sach where masach = ?";
         List<sach> list = getData(sql,id);
         return list.get(0);
+    }
+
+    public ArrayList<sach> sapXepT(){
+        String sql = "select * from sach order by giathue";
+        ArrayList<sach> list = getData(sql);
+        return list;
+    }
+    public ArrayList<sach> sapXepG(){
+        String sql = "select * from sach order by giathue desc";
+        ArrayList<sach> list = getData(sql);
+        return list;
     }
 }

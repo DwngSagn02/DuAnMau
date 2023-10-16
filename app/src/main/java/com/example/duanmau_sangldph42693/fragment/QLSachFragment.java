@@ -38,6 +38,7 @@ public class QLSachFragment extends Fragment {
     private ArrayList<sach> list = new ArrayList<>();
     private ArrayList<loaisach> listLoai = new ArrayList<loaisach>();
     private loaisachDao lsDao;
+    private Button btn_tang,btn_giam,btn_reset;
 
     public QLSachFragment() {
         // Required empty public constructor
@@ -51,15 +52,38 @@ public class QLSachFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_q_l_sach, container, false);
         fladd_sach = view.findViewById(R.id.fladd_sach);
         rcv_sach = view.findViewById(R.id.rcv_sach);
+        btn_tang = view.findViewById(R.id.btn_tang);
+        btn_giam = view.findViewById(R.id.btn_giam);
+        btn_reset = view.findViewById(R.id.btn_reset);
 
         sDao = new sachDao(getContext());
         lsDao = new loaisachDao(getContext());
         list = sDao.selectAllSach();
 
-        rcv_sach.setLayoutManager(new LinearLayoutManager(getActivity()));
-        adapter = new sachAdapter(getContext(),list);
-        rcv_sach.setAdapter(adapter);
+        loadSach(list);
 
+        btn_tang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ArrayList<sach> listTang = sDao.sapXepT();
+                loadSach(listTang);
+            }
+        });
+
+        btn_giam.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ArrayList<sach> listGiam = sDao.sapXepG();
+                loadSach(listGiam);
+            }
+        });
+
+        btn_reset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loadSach(list);
+            }
+        });
         fladd_sach.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -128,8 +152,8 @@ public class QLSachFragment extends Fragment {
                     int gia = Integer.parseInt(giathue);
                     if (sDao.addSach(maloai,tensach,gia)){
                         list.clear();
-                        list.addAll(sDao.selectAllSach());
-                        adapter.notifyDataSetChanged();
+                        list = sDao.selectAllSach();
+                        loadSach(list);
                         Toast.makeText(getContext(), "Thêm thành công", Toast.LENGTH_SHORT).show();
                         dialog.dismiss();
                     }else {
@@ -144,4 +168,10 @@ public class QLSachFragment extends Fragment {
         return so.matches("\\d++");
     }
 
+    private void loadSach(ArrayList<sach> list1){
+        rcv_sach.setLayoutManager(new LinearLayoutManager(getActivity()));
+        adapter = new sachAdapter(getContext(),list1);
+        adapter.notifyDataSetChanged();
+        rcv_sach.setAdapter(adapter);
+    }
 }
